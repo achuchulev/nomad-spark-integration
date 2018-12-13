@@ -18,16 +18,16 @@
   },
   {
     "type": "file",
-    "source": "../shared",
+    "source": "./shared",
     "destination": "/ops"
   },
   {
     "type": "file",
-    "source": "../examples",
+    "source": "./examples",
     "destination": "/ops"
   },
   {
     "type": "shell",
-    "script": "../shared/scripts/setup.sh"
+    "script": "./shared/scripts/setup.sh"
   }]
 }
