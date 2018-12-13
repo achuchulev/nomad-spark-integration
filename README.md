@@ -42,3 +42,19 @@ key_name                = "KEY_NAME"
 server_count            = "3"
 client_count            = "4"
 ```
+
+### Provision the cluster:
+
+```
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
+### Access the cluster
+
+SSH to one of the servers using its public IP:
+
+```
+$ ssh -i /path/to/private/key ubuntu@PUBLIC_IP
+```
