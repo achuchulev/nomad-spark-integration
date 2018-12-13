@@ -101,8 +101,8 @@ data "template_file" "user_data_client" {
   template = "${file("${path.root}/user-data-client.sh")}"
 
   vars {
-    region     = "${var.region}"
-    retry_join = "${var.retry_join}"
+    region       = "${var.region}"
+    retry_join   = "${var.retry_join}"
     nomad_binary = "${var.nomad_binary}"
   }
 }
@@ -138,11 +138,11 @@ resource "aws_instance" "client" {
     ConsulAutoJoin = "auto-join"
   }
 
-  ebs_block_device =  {
-    device_name                 = "/dev/xvdd"
-    volume_type                 = "gp2"
-    volume_size                 = "50"
-    delete_on_termination       = "true"
+  ebs_block_device = {
+    device_name           = "/dev/xvdd"
+    volume_type           = "gp2"
+    volume_size           = "50"
+    delete_on_termination = "true"
   }
 
   user_data            = "${data.template_file.user_data_client.rendered}"
@@ -197,3 +197,4 @@ output "server_public_ips" {
 
 output "client_public_ips" {
   value = ["${aws_instance.client.*.public_ip}"]
+}
