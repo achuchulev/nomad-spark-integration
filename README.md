@@ -30,6 +30,7 @@ Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to 
 
 ```
 vagrant ssh
+cd /vagrant
 ```
 
 ### Set the AWS environment variables
