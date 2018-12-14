@@ -208,12 +208,19 @@ spark-submit \
   /etc/sudoers hdfs://hdfs.service.consul/foo
   ```
   
-### Destroy Nomad cluster
+### How to destroy  
+  
+#### Nomad cluster
 
 ```
 $ exit                #exit ssh session to nomad server
-$ terraform destroy
+$ terraform destroy   #from lab server /vagrant directory
+```
+
+#### Lab
+
+```
 $ exit                #exit ssh session to lab server
-$ vagrant destroy
+$ vagrant destroy     #from repo root
 ```
 
