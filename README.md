@@ -1,6 +1,6 @@
 # Run Apache Spark on Nomad
 
-#### Apache Spark is a data processing engine/framework that has been architected to use third-party schedulers and natively integrates Nomad as a cluster manager and scheduler for Spark. When running on Nomad, the Spark executors that run Spark tasks for your application, and optionally the application driver itself, run as Nomad tasks in a Nomad job.
+Apache Spark is a data processing engine/framework that has been architected to use third-party schedulers and natively integrates Nomad as a cluster manager and scheduler for Spark. When running on Nomad, the Spark executors that run Spark tasks for your application, and optionally the application driver itself, run as Nomad tasks in a Nomad job.
 
 ### Pre-requisites
 
