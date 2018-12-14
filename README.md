@@ -86,8 +86,8 @@ $ terraform apply
 
 ### Access the cluster
 
-The Nomad UI can be accessed at http://PUBLIC_IP:4646/ui.
-The Consul UI can be accessed at http://PUBLIC_IP:8500/ui.
+- The Nomad UI can be accessed at http://PUBLIC_IP:4646/ui.
+- The Consul UI can be accessed at http://PUBLIC_IP:8500/ui.
 
 SSH to one of the servers using its public IP:
 
