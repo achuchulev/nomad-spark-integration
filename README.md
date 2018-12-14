@@ -68,8 +68,8 @@ $ cd aws/env/us-east
 Update `terraform.tfvars` with your SSH key name and your AMI ID if you created a custom AMI:
 
 ```
-region                  = "us-east-1"
-ami                     = "ami-0c207c24df48e155a"
+region                  = "us-east-2"
+ami                     = "ami-023db6a9decf31f96"
 instance_type           = "t2.medium"
 key_name                = "KEY_NAME"
 server_count            = "3"
