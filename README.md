@@ -146,7 +146,7 @@ $ dig spark-history.service.consul
 
 Cross-reference the private IP with the terraform apply output to get the corresponding public IP. You can access the history server at http://PUBLIC_IP:18080.
 
-#### Sample Spark jobs
+### Sample Spark jobs
 
 The sample spark-submit commands listed below demonstrate several of the official Spark examples. Features like spark-sql, spark-shell and pyspark are included. The commands can be executed from any client or server.
 
@@ -161,7 +161,7 @@ $ nomad logs DRIVER_ALLOC_ID
 
 To view the output of the job, run nomad logs for the driver's Allocation ID.
 
-##### SparkPi (Java)
+#### SparkPi (Java)
 
 ```
 spark-submit \
@@ -176,7 +176,7 @@ spark-submit \
   https://s3.amazonaws.com/nomad-spark/spark-examples_2.11-2.1.0-SNAPSHOT.jar 100
   ```
 
-##### Word count (Java)
+#### Word count (Java)
 
 ```
 spark-submit \
@@ -192,7 +192,7 @@ spark-submit \
   hdfs://hdfs.service.consul/foo/history.log
 ```
 
-##### DFSReadWriteTest (Scala)
+#### DFSReadWriteTest (Scala)
 
 ```
 spark-submit \
@@ -207,3 +207,13 @@ spark-submit \
   https://s3.amazonaws.com/nomad-spark/spark-examples_2.11-2.1.0-SNAPSHOT.jar \
   /etc/sudoers hdfs://hdfs.service.consul/foo
   ```
+  
+### Destroy Nomad cluster
+
+```
+$ exit              # to exit ssh session to nomad server
+$ terraform destroy
+$ exit              # to exit ssh session to lab server
+$ vagrant destroy
+```
+
