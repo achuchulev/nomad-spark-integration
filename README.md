@@ -146,7 +146,7 @@ $ dig spark-history.service.consul
 
 Cross-reference the private IP with the terraform apply output to get the corresponding public IP. You can access the history server at http://PUBLIC_IP:18080.
 
-### Sample Spark jobs
+### Run sample Spark jobs
 
 The sample spark-submit commands listed below demonstrate several of the official Spark examples. Features like spark-sql, spark-shell and pyspark are included. The commands can be executed from any client or server.
 
@@ -176,7 +176,7 @@ spark-submit \
   https://s3.amazonaws.com/nomad-spark/spark-examples_2.11-2.1.0-SNAPSHOT.jar 100
   ```
 
-#### Word count (Java)
+#### WordCount (Java)
 
 ```
 spark-submit \
