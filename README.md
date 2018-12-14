@@ -11,9 +11,9 @@ Apache Spark is a data processing engine/framework that has been architected to 
 - API access keys
 - SSH key pair
 
-### How to build
+## How to build
 
-### Get the repo and run lab
+#### Get the repo and run lab
 
 ```
 https://github.com/achuchulev/spark-on-nomad.git
@@ -26,14 +26,14 @@ Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to 
 - Packer
 - Terraform
 
-### SSH to VM
+#### SSH to VM
 
 ```
 vagrant ssh
 cd /vagrant
 ```
 
-### Set the AWS environment variables
+#### Set the AWS environment variables
 
 ```
 $ export AWS_ACCESS_KEY_ID=[AWS_ACCESS_KEY_ID]
@@ -76,7 +76,7 @@ server_count            = "3"
 client_count            = "4"
 ```
 
-### Provision the cluster:
+#### Provision the cluster:
 
 ```
 $ terraform init
@@ -84,7 +84,7 @@ $ terraform plan
 $ terraform apply
 ```
 
-### Access the cluster
+#### Access the cluster
 
 SSH to one of the servers using its public IP:
 
