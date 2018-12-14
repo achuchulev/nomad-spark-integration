@@ -11,6 +11,4 @@
 # Cache objects
 packer_cache/
 
-# For built boxes
-builds/
-output-*/*
+.vagrant/
