@@ -26,7 +26,7 @@ Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to 
 - Packer
 - Terraform
 
-### SSH to VM
+### Access lab VM
 
 ```
 vagrant ssh
