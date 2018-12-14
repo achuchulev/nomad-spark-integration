@@ -1,9 +1,9 @@
 #!/bin/bash
 
-which wget unzip curl docker make ruby &>/dev/null || {
+# install pre-requisites
+which wget unzip curl ruby &>/dev/null || {
   sudo apt-get update
-  sudo apt-get install -y wget unzip curl docker.io make ruby
-  sudo usermod -a -G docker ubuntu
+  sudo apt-get install -y wget unzip curl ruby
   sudo gem install rubyzip
 }
 
