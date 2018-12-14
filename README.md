@@ -16,9 +16,9 @@ Apache Spark is a data processing engine/framework that has been architected to 
 ### Get the repo and run lab
 
 ```
-https://github.com/achuchulev/spark-on-nomad.git
-cd spark-on-nomad
-vagrant up
+$ https://github.com/achuchulev/spark-on-nomad.git
+$ cd spark-on-nomad
+$ vagrant up
 ```
 
 Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to install:
@@ -29,8 +29,8 @@ Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to 
 ### Access lab VM
 
 ```
-vagrant ssh
-cd /vagrant
+$ vagrant ssh
+$ cd /vagrant
 ```
 
 ### Set the AWS environment variables
@@ -93,3 +93,82 @@ $ ssh -i /path/to/private/key ubuntu@PUBLIC_IP
 ```
 
 The infrastructure that is provisioned for this test environment is configured to allow all traffic on port 22 that is not recommended for production deployments.
+
+### Test Nomad cluster
+
+Run a few basic status commands to verify that Consul and Nomad are up and running properly:
+
+```
+$ consul members
+$ nomad server members
+$ nomad node status
+```
+
+## Setup Nomad / Spark integration
+
+The Spark history server and several of the sample Spark jobs below require HDFS. Using the included job file, deploy an HDFS cluster on Nomad:
+
+```
+$ cd $HOME/examples/spark
+$ nomad run hdfs.nomad
+$ nomad status hdfs
+```
+
+When the allocations are all in the running state (as shown by nomad status hdfs), query Consul to verify that the HDFS service has been registered:
+
+```
+$ dig hdfs.service.consul
+```
+
+Next, create directories and files in HDFS for use by the history server and the sample Spark jobs:
+
+```
+$ hdfs dfs -mkdir /foo
+$ hdfs dfs -put /var/log/apt/history.log /foo
+$ hdfs dfs -mkdir /spark-events
+$ hdfs dfs -ls /
+```
+
+Finally, deploy the Spark history server:
+
+```
+$ nomad run spark-history-server-hdfs.nomad
+```
+
+You can get the private IP for the history server with a Consul DNS lookup:
+
+```
+$ dig spark-history.service.consul
+```
+
+Cross-reference the private IP with the terraform apply output to get the corresponding public IP. You can access the history server at http://PUBLIC_IP:18080.
+
+#### Sample Spark jobs
+
+The sample spark-submit commands listed below demonstrate several of the official Spark examples. Features like spark-sql, spark-shell and pyspark are included. The commands can be executed from any client or server.
+
+You can monitor the status of a Spark job in a second terminal session with:
+
+```
+$ nomad status
+$ nomad status JOB_ID
+$ nomad alloc-status DRIVER_ALLOC_ID
+$ nomad logs DRIVER_ALLOC_ID
+```
+
+To view the output of the job, run nomad logs for the driver's Allocation ID.
+
+##### SparkPi (Java)
+
+```
+spark-submit \
+  --class org.apache.spark.examples.JavaSparkPi \
+  --master nomad \
+  --deploy-mode cluster \
+  --conf spark.executor.instances=4 \
+  --conf spark.nomad.cluster.monitorUntil=complete \
+  --conf spark.eventLog.enabled=true \
+  --conf spark.eventLog.dir=hdfs://hdfs.service.consul/spark-events \
+  --conf spark.nomad.sparkDistribution=https://s3.amazonaws.com/nomad-spark/spark-2.1.0-bin-nomad.tgz \
+  https://s3.amazonaws.com/nomad-spark/spark-examples_2.11-2.1.0-SNAPSHOT.jar 100
+  ```
