@@ -7,3 +7,10 @@
 
 # .tfvars files
 *.tfvars
+
+# Cache objects
+packer_cache/
+
+# For built boxes
+builds/
+output-*/*
