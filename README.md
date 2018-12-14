@@ -1,11 +1,34 @@
 # A sample repo with example of how to run Apache Spark on Nomad
 
 ### Pre-requisites
-To get started, create the following:
 
+- Vagrant
+- Virtualbox
+- Git
 - AWS account
 - API access keys
 - SSH key pair
+
+### How to build
+
+### Get the repo and run lab
+
+```
+https://github.com/achuchulev/spark-on-nomad.git
+cd spark-on-nomad
+vagrant up
+```
+
+Vagrant up will start a VM on virtualbox and will run `scripts/provision.sh` to install:
+
+- Packer
+- Terraform
+
+### SSH to VM
+
+```
+vagrant ssh
+```
 
 ### Set the AWS environment variables
 
@@ -16,7 +39,14 @@ $ export AWS_SECRET_ACCESS_KEY=[AWS_SECRET_ACCESS_KEY]
 
 ### Build an AWS machine image with Packer
 
-Packer is HashiCorp's open source tool for creating identical machine images for multiple platforms from a single source configuration. The Terraform templates included in this repo reference a publicly available Amazon machine image (AMI) by default. The AMI can be customized through modifications to the build configuration script and packer.json.
+Packer will bake an AMI on AWS using a publicly available AMI by default that is customized through modifications to the build configuration script and packer.json.
+
+To use custom AMI from specific region modify the lines below within `packer.json`
+
+```
+"source_ami": "ami-80861296"
+"instance_type": "t2.medium"
+```
 
 Use the following command to build the AMI:
 
