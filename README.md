@@ -144,7 +144,7 @@ You can get the private IP for the history server with a Consul DNS lookup:
 $ dig spark-history.service.consul
 ```
 
-Cross-reference the private IP with the terraform apply output to get the corresponding public IP. You can access the history server at http://PUBLIC_IP:18080.
+Cross-reference the private IP looking in the Nomad UI filtering by client's ip to get the corresponding public IP. You can access the history server at http://PUBLIC_IP:18080.
 
 ### Run sample Spark jobs
 
