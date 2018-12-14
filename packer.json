@@ -1,8 +1,8 @@
 {
   "builders": [{
     "type": "amazon-ebs",
-    "region": "us-east-1",
-    "source_ami": "ami-80861296",
+    "region": "us-east-2",
+    "source_ami": "ami-618fab04",
     "instance_type": "t2.medium",
     "ssh_username": "ubuntu",
     "ami_name": "hashistack {{timestamp}}",
