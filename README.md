@@ -1,5 +1,7 @@
 # A sample repo with example of how to run Apache Spark on Nomad
 
+#### Apache Spark is a data processing engine/framework that has been architected to use third-party schedulers and natively integrates Nomad as a cluster manager and scheduler for Spark. When running on Nomad, the Spark executors that run Spark tasks for your application, and optionally the application driver itself, run as Nomad tasks in a Nomad job.
+
 ### Pre-requisites
 
 - Vagrant
@@ -54,12 +56,12 @@ Use the following command to build the AMI:
 $ packer build packer.json
 ```
 
-### Provision a cluster with Terraform
+### Provision a Nomad cluster with Terraform on AWS
 
-cd to an environment subdirectory:
+cd to the environment subdirectory:
 
 ```
-$ cd env/us-east
+$ cd aws/env/us-east
 ```
 
 ### Update terraform.tfvars with your SSH key name and your AMI ID if you created a custom AMI:
@@ -88,3 +90,5 @@ SSH to one of the servers using its public IP:
 ```
 $ ssh -i /path/to/private/key ubuntu@PUBLIC_IP
 ```
+
+The infrastructure that is provisioned for this test environment is configured to allow all traffic on port 22 that is not recommended for production deployments.
