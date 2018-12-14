@@ -1,0 +1,6 @@
+region            = "us-east-2"
+ami               = "ami-023db6a9decf31f96"
+instance_type     = "t2.medium"
+key_name          = "atanas-mac"
+server_count      = "2"
+client_count      = "4"
