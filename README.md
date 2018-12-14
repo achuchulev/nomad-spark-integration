@@ -211,9 +211,9 @@ spark-submit \
 ### Destroy Nomad cluster
 
 ```
-$ exit              # to exit ssh session to nomad server
+$ exit                #exit ssh session to nomad server
 $ terraform destroy
-$ exit              # to exit ssh session to lab server
+$ exit                #exit ssh session to lab server
 $ vagrant destroy
 ```
 
