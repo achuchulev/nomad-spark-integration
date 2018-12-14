@@ -65,7 +65,7 @@ cd to the environment subdirectory:
 $ cd aws/env/us-east
 ```
 
-### Update terraform.tfvars with your SSH key name and your AMI ID if you created a custom AMI:
+Update `terraform.tfvars` with your SSH key name and your AMI ID if you created a custom AMI:
 
 ```
 region                  = "us-east-1"
