@@ -46,8 +46,8 @@ Packer will bake an AMI on AWS using a publicly available AMI by default that is
 To use custom AMI from specific region modify the lines below within `packer.json`
 
 ```
-"source_ami": "ami-80861296"
-"instance_type": "t2.medium"
+"region": "us-east-2"
+"source_ami": "ami-618fab04"
 ```
 
 Use the following command to build the AMI:
